@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="/style.css">
     <title>Dinos Directory</title>
   </head>
   <body>
@@ -16,7 +17,12 @@
           {{/color}}
         </ul>
         <li>{{diet}}</li>
+        <div class="buttons">
+          <button type="button" id='editButton' name="button">Edit</button>
+          <button type="button" id='deleteButton' name="button">Delete</button>
+        </div>
       </ul>
       {{/allDinos}}
+      <script src="/main.js"></script>
   </body>
 </html>

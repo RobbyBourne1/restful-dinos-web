@@ -50,6 +50,12 @@ app.get('/', (request, response) => {
   response.render('index', { allDinos: allDinos })
 })
 
+app.delete('/api/dinos/:id', (request, response) => {
+  const dinoId = parseInt(request.params.id)
+  allDinos = allDinos.filter(dino => dino.id !== dinoId)
+  response.json(allDinos)
+})
+
 // app.get('/api/dinos', (request, response) => {
 //   response.json(allDinos)
 // })
@@ -89,11 +95,6 @@ app.get('/', (request, response) => {
 //   response.json(allDinos)
 // })
 //
-// app.delete('/api/dinos/:id', (request, response) => {
-//   const dinoId = parseInt(request.params.id)
-//   allDinos = allDinos.filter(dino => dino.id !== dinoId)
-//   response.json(allDinos)
-// })
 
 app.listen(3000, () => {
   console.log('Clever Girl')
