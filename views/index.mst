@@ -7,6 +7,7 @@
   </head>
   <body>
       <h1>Dinos</h1>
+      <h3><a href="/input">Add Dino</a></h3>
       {{#allDinos}}
       <ul>
         <li><img src="{{imageurl}}" alt="{{name}}"></li>
@@ -18,8 +19,8 @@
         </ul>
         <li>{{diet}}</li>
         <div class="buttons">
-          <button type="button" id='editButton' name="button">Edit</button>
-          <button type="button" id='deleteButton' name="button">Delete</button>
+          <button type="button" class='editButton' data-id="{{id}}" name="button">Edit</button>
+          <button type="button" class='deleteButton' data-id="{{id}}" name="button">Delete</button>
         </div>
       </ul>
       {{/allDinos}}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add Dino</title>
+  </head>
+  <body>
+    <h1>Fill Out The Form Below</h1>
+    <div class="input-wrapper">
+      <form class="addDino" action="/" method="post">
+        <input type="text" name="name" value="" placeholder="Add Name" autofocus='on'>
+        <input type="text" name="color" value="" placeholder="Add Colors">
+        <input type="text" name="diet" value="" placeholder="Add Diet">
+        <input type="text" name="imageurl" value="" placeholder="Add Image">
+        <button type="submit" class="Submit" name="button">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>

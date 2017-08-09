@@ -12,7 +12,7 @@ app.use(express.static('public'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-const allDinos = [
+let allDinos = [
   {
     id: 1,
     name: 'T-Rex',
@@ -46,16 +46,36 @@ const allDinos = [
 ]
 
 app.get('/', (request, response) => {
-  console.log(allDinos)
   response.render('index', { allDinos: allDinos })
 })
 
-app.delete('/api/dinos/:id', (request, response) => {
-  const dinoId = parseInt(request.params.id)
-  allDinos = allDinos.filter(dino => dino.id !== dinoId)
-  response.json(allDinos)
+app.get('/input', (request, response) => {
+  response.render('input')
 })
 
+app.post('/', (request, response) => {
+  const insertDino = {
+    id: allDinos.length + 1,
+    name: request.body.name,
+    color: request.body.color,
+    diet: request.body.diet,
+    imageurl: request.body.imageurl
+  }
+  allDinos.push(insertDino)
+  console.log(allDinos)
+  response.redirect('/')
+})
+
+app.delete('/:id', (request, response) => {
+  const dinoId = parseInt(request.params.id)
+  allDinos = allDinos.filter(dino => dino.id !== dinoId)
+  console.log(allDinos)
+  response.redirect('/')
+})
+
+app.put('/:id', (request, response) => {
+  const dinoId = parseInt(request.params.id)
+})
 // app.get('/api/dinos', (request, response) => {
 //   response.json(allDinos)
 // })
