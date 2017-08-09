@@ -18,6 +18,21 @@ document.addEventListener('click', function(event) {
       // })
       .then(response => {
         // if a redirect, tell the BROWSER to follow it
+        window.location = response.url
+      })
+      .catch(error => {
+        console.log('error', error)
+      })
+  }
+})
+
+document.addEventListener('click', function() {
+  if (event.target.className === 'editButton') {
+    let _url = 'http://localhost:3000/input'
+    fetch(url, { method: 'put' })
+      .then(response => response.json())
+      .then(response => {
+        // if a redirect, tell the BROWSER to follow it
         if (response.redirected) {
           window.location = response.url
         }
@@ -26,12 +41,4 @@ document.addEventListener('click', function(event) {
         console.log('error', error)
       })
   }
-})
-
-document.querySelector('.editButton').addEventListener('click', function() {
-  let id = this.getAttribute('data-id')
-  let _url = url + id
-  fetch(_url, { method: 'delete' }).then(response => response.json()).then(json => {
-    console.log(json)
-  })
 })
