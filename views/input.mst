@@ -8,7 +8,7 @@
     <h1>Fill Out The Form Below</h1>
     <div class="input-wrapper">
       <form class="addDino" action="/" method="post">
-        <input type="text" name="name" value="" placeholder="Add Name" autofocus='on'>
+        <input type="text" name="name" value="{{dino.name}}" placeholder="Add Name" autofocus='on'>
         <input type="text" name="color" value="" placeholder="Add Colors">
         <input type="text" name="diet" value="" placeholder="Add Diet">
         <input type="text" name="imageurl" value="" placeholder="Add Image">

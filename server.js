@@ -50,7 +50,7 @@ app.get('/', (request, response) => {
 })
 
 app.get('/input', (request, response) => {
-  response.render('input')
+  response.render('input', { dino: {} })
 })
 
 app.post('/', (request, response) => {
@@ -70,7 +70,15 @@ app.delete('/:id', (request, response) => {
   const dinoId = parseInt(request.params.id)
   allDinos = allDinos.filter(dino => dino.id !== dinoId)
   console.log(allDinos)
-  response.redirect('/')
+  response.redirect(303, '/')
+  // response.json({ status: 'ok', newUrl: '/', deletedDino: dinoId })
+})
+
+app.get('/edit/:id', (request, response) => {
+  const dinoId = parseInt(request.params.id)
+  dino = allDinos.find(dino => dino.id === dinoId)
+
+  response.render('input', { dino: dino })
 })
 
 app.put('/:id', (request, response) => {
