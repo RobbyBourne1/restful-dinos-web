@@ -12,35 +12,42 @@ app.use(express.static('public'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-let allDinos = [
+const allDinos = [
   {
     id: 1,
     name: 'T-Rex',
     color: ['Green', 'Red'],
-    diet: 'Carnivore'
+    diet: 'Carnivore',
+    imageurl: 'http://www.trexcafe.com/images/cover/cover_trex.png'
   },
   {
     id: 2,
     name: 'Raptor',
     color: ['Green', 'Purple'],
-    diet: 'Carnivore'
+    diet: 'Carnivore',
+    imageurl:
+      'http://vignette3.wikia.nocookie.net/jurassicpark/images/5/51/Jurassic-world-raptor-delta.jpg/revision/latest?cb=20150213174656'
   },
   {
     id: 3,
     name: 'Stegosaurus',
     color: ['Green', 'Yellow'],
-    diet: 'Herbivore'
+    diet: 'Herbivore',
+    imageurl: 'https://www.newdinosaurs.com/wp-content/uploads/2016/01/28_stegosaurus_karen_carr.jpg'
   },
   {
     id: 4,
     name: 'Triceratops',
     color: ['Orange', 'Yellow'],
-    diet: 'Herbivore'
+    diet: 'Herbivore',
+    imageurl:
+      'https://vignette2.wikia.nocookie.net/dino/images/f/f6/JW_triceratops.png/revision/latest?cb=20150407211112'
   }
 ]
 
 app.get('/', (request, response) => {
-  response.send('Hello World')
+  console.log(allDinos)
+  response.render('index', { allDinos: allDinos })
 })
 
 // app.get('/api/dinos', (request, response) => {

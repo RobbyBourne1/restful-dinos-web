@@ -5,6 +5,18 @@
     <title>Dinos Directory</title>
   </head>
   <body>
-    <h1>Hello World</h1>
+      <h1>Dinos</h1>
+      {{#allDinos}}
+      <ul>
+        <li><img src="{{imageurl}}" alt="{{name}}"></li>
+        <li>{{name}}</li>
+        <ul>
+          {{#color}}
+          <li>{{.}}</li>
+          {{/color}}
+        </ul>
+        <li>{{diet}}</li>
+      </ul>
+      {{/allDinos}}
   </body>
 </html>
