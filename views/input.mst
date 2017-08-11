@@ -7,7 +7,7 @@
   <body>
     <h1>Fill Out The Form Below</h1>
     <div class="input-wrapper">
-      <form class="addDino" action="/" method="post">
+      <form class="addDino" action="/{{dino.id}}" method="post">
         <input type="text" name="name" value="{{dino.name}}" placeholder="Add Name" autofocus='on'>
         <input type="text" name="color" value="" placeholder="Add Colors">
         <input type="text" name="diet" value="" placeholder="Add Diet">

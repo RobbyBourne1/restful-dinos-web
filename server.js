@@ -74,13 +74,13 @@ app.delete('/:id', (request, response) => {
 })
 
 app.get('/edit/:id', (request, response) => {
-  const dinoId = parseInt(request.params.id)
-  dino = allDinos.find(dino => dino.id === dinoId)
+  dino = allDinos.find(dino => dino.id === request.params.id)
 
   response.render('input', { dino: dino })
 })
 
-app.put('/input', (request, response) => {
+app.put('/:id', (request, response) => {
+  const dinoId = parseInt(request.params.id)
   const insertDino = {
     id: allDinos.length + 1,
     name: request.body.name,
@@ -88,7 +88,7 @@ app.put('/input', (request, response) => {
     diet: request.body.diet,
     imageurl: request.body.imageurl
   }
-  // response.redirect('/input')
+  response.redirect('/edit/:id')
 })
 
 app.listen(3000, () => {
