@@ -50,9 +50,10 @@ app.get('/', (request, response) => {
 })
 
 app.get('/input', (request, response) => {
-  response.render('input', { dino: {} })
+  response.render('input', { dino: {}, method: 'post' })
 })
 
+// CREATING a new DINO
 app.post('/', (request, response) => {
   const insertDino = {
     id: allDinos.length + 1,
@@ -62,7 +63,6 @@ app.post('/', (request, response) => {
     imageurl: request.body.imageurl
   }
   allDinos.push(insertDino)
-  console.log(allDinos)
   response.redirect('/')
 })
 
@@ -74,23 +74,25 @@ app.delete('/:id', (request, response) => {
 })
 
 app.get('/edit/:id', (request, response) => {
-  dino = allDinos.find(dino => dino.id === request.params.id)
-
-  response.render('input', { dino: dino })
-})
-
-app.put('/:id', (request, response) => {
   const dinoId = parseInt(request.params.id)
-  const insertDino = {
-    id: allDinos.length + 1,
-    name: request.body.name,
-    color: request.body.color,
-    diet: request.body.diet,
-    imageurl: request.body.imageurl
-  }
-  response.redirect('/edit/:id')
+  dino = allDinos.find(dino => dino.id === dinoId)
+
+  response.render('input', { dino: dino, method: 'patch' })
 })
+
+// UPDATING a new DINO
+app.patch('/:id', (request, response) => {})
 
 app.listen(3000, () => {
   console.log('Clever Girl')
 })
+
+/*
+GET /dinos        => list of the dinos
+GET /dinos/1      => show info about dino #1
+GET /dinos/edit/1 => show a form to edit dino #1
+PATCH /dinos/1    => update dino #1
+DELETE /dinos/1   => delete dino #1
+GET /dinos/new    => Show a form for a new dino
+POST /dinos       => Create a new dino
+*/

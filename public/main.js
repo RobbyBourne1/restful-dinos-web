@@ -28,4 +28,20 @@ document.addEventListener('click', function(event) {
   }
 })
 
-document.addEventListener('click', function() {})
+const dinoForm = document.querySelector('form.dino')
+
+if (dinoForm) {
+  dinoForm.addEventListener('submit', function(event) {
+    event.preventDefault()
+
+    console.log('you clicked on', event)
+    const element = event.target
+    let id = element.getAttribute('data-id')
+
+    // use fetch to make an API request
+
+    // if (event.target.clasName === 'submit') {
+    //   console.log('This is submit', event)
+    // }
+  })
+}
